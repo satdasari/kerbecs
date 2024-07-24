@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/styles.css'; // Correct path for CSS
+import '../styles/styles.css'; // Ensure correct path
 
 const Visualization = ({ monthsLived, monthsRemaining, birthYear, birthMonth, currentYear, currentMonth }) => {
   const totalMonths = monthsLived + monthsRemaining;
@@ -31,11 +31,7 @@ const Visualization = ({ monthsLived, monthsRemaining, birthYear, birthMonth, cu
       <div key={year} className="year-container">
         <div className="year-label">{year}</div>
         <div className="months-container">
-          {months.map((month, index) => (
-            <div key={index} className="month-cell">
-              {month}
-            </div>
-          ))}
+          {months}
         </div>
       </div>
     );

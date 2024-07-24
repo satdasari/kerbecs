@@ -4,7 +4,7 @@ import '../styles/styles.css'; // Ensure correct path
 const TimeLeftCalculation = ({ monthsRemaining }) => {
   const [screenTime, setScreenTime] = useState('');
   const [works, setWorks] = useState(false);
-  const [timeLeftCircles, setTimeLeftCircles] = useState([]);
+  const [squares, setSquares] = useState([]);
 
   const handleCalculate = () => {
     const dailyScreenTimeFraction = parseFloat(screenTime) / 24;
@@ -12,10 +12,10 @@ const TimeLeftCalculation = ({ monthsRemaining }) => {
     const sleepMonths = Math.ceil(monthsRemaining / 3);
     const workMonths = works ? Math.ceil(monthsRemaining / 4) : 0;
 
-    // Create circles for total remaining months with appropriate colors
-    const circles = [];
+    // Create squares for total remaining months with appropriate colors
+    const totalSquares = [];
     for (let i = 1; i <= monthsRemaining; i++) {
-      let className = 'month-circle';
+      let className = 'month-square';
       if (i <= sleepMonths) {
         className += ' sleep';
       } else if (i <= sleepMonths + workMonths) {
@@ -23,9 +23,9 @@ const TimeLeftCalculation = ({ monthsRemaining }) => {
       } else if (i <= sleepMonths + workMonths + screenTimeMonths) {
         className += ' screen-time';
       }
-      circles.push(<div key={i} className={className}><span className="month-label">{i}</span></div>);
+      totalSquares.push(<div key={i} className={className}><span className="month-label">{i}</span></div>);
     }
-    setTimeLeftCircles(circles);
+    setSquares(totalSquares);
   };
 
   return (
@@ -52,11 +52,15 @@ const TimeLeftCalculation = ({ monthsRemaining }) => {
         />
       </label>
       <br />
-      <button onClick={handleCalculate}>Calculate Effective Time Left</button>
-      <h3>Total Remaining Months:</h3>
-      <div className="months-container">
-        {timeLeftCircles}
-      </div>
+      <button onClick={handleCalculate}>Calculate Time Left</button>
+      {squares.length > 0 && (
+        <div>
+          <h3>Total Remaining Months:</h3>
+          <div className="squares-container">
+            {squares}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

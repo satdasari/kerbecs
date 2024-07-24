@@ -48,12 +48,13 @@ input, select, button {
 
 .months-container {
   display: grid;
-  grid-template-columns: repeat(4, 40px); /* Updated for new matrix layout */
-  grid-template-rows: repeat(3, 40px); /* Updated for new matrix layout */
+  grid-template-columns: repeat(4, 40px); /* Ensure original circles are in 4x3 matrix */
+  grid-template-rows: repeat(3, 40px); /* Ensure original circles are in 4x3 matrix */
   gap: 5px;
   justify-content: center;
 }
 
+/* Original month-circle styles */
 .month-circle {
   width: 40px; /* Updated for new size */
   height: 40px; /* Updated for new size */
@@ -64,21 +65,21 @@ input, select, button {
   background-color: transparent; /* Default to not filled */
 }
 
-.month-circle.sleep {
-  background-color: lightpurple; /* Sleep color */
-}
-
-.month-circle.work {
-  background-color: lightgreen; /* Work color */
-}
-
-.month-circle.screen-time {
-  background-color: lightorange; /* Screen time color */
-}
-
 .month-circle:hover {
   transform: scale(1.2);
   z-index: 1;
+}
+
+.month-circle.pre-birth {
+  background-color: grey;
+}
+
+.month-circle.filled {
+  background-color: white;
+}
+
+.month-circle.current {
+  background-color: orange;
 }
 
 .month-label {
@@ -89,4 +90,43 @@ input, select, button {
   font-size: 10px;
   pointer-events: none;
   color: white; /* All numbers will be white */
+}
+
+/* New month-square styles */
+.squares-container {
+  display: grid;
+  grid-template-columns: repeat(12, 40px); /* Updated for new matrix layout */
+  gap: 5px;
+  justify-content: center;
+}
+
+.month-square {
+  width: 40px; /* Updated for new size */
+  height: 40px; /* Updated for new size */
+  border-radius: 4px; /* Square shape */
+  border: 1px solid #fff; /* Updated border color */
+  position: relative;
+  transition: transform 0.2s;
+  background-color: transparent; /* Default to not filled */
+}
+
+.month-square.sleep {
+  background-color: rgb(254, 162, 162); /* Sleep color */
+}
+
+.month-square.work {
+  background-color: rgb(243, 207, 172); /* Work color */
+}
+
+.month-square.screen-time {
+  background-color: rgb(244, 236, 183); /* Screen time color */
+}
+
+.month-square:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.month-square .month-label {
+  color: white; /* Ensure all numbers in squares are white */
 }
